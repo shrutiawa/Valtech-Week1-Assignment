@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4</title>
+    <style>
+        *{
+            box-sizing: border-box;
+             padding:0;
+             margin:0;
+             
+         }
+         body{
+             background-color: #344a72;
+         }
+         .input_styling{
+             width:100%;
+         }
+         
+         form{
+             margin:20px 20px;
+         }
+         #form_container{
+             display:block;
+             width:400px;
+             height:600px;
+             border: 1px solid black;
+             background-color: white;
+             border-radius: 5px;
+             margin:50px auto;
+         }
+ 
+         .btn{
+             background-color: green;
+             color:white;
+             text-align: center;
+             padding: 5px;
+             cursor: pointer;
+         }
+         .btn:hover{
+             background-color: #37a08e;
+             color: black;
+         }
+ 
+     </style>
+</head>
+<body>
+    <div id="form_container">
+        <form action="#" method="get" id="form-wrap">
+            <label for="firstname">First Name : </label>
+            <br>
+            <input required type="text" id="firstname" placeholder="Enter your first name" class="input_styling">
+            <br><br>
+            <label for="firstname">Last Name : </label>
+            <br>
+            <input required type="text" id="lastname" placeholder="Enter your last name" class="input_styling">
+            <br><br>
+            <label for="firstname">Email : </label>
+            <br>
+            <input required type="email" id="email" placeholder="Enter your emailid" class="input_styling">
+            <br><br>
+            <p>Please select your Gender :</p>
+            <input type="radio" id="male" value="male"  name="gender">
+            <label for="male">Male</label>
+            <br>
+            <input type="radio" id="female"  value="female"  name="gender"checked>
+            <label for="female">Female</label>
+            <br>
+            <input type="radio" id="other" value="other" name="gender">
+            <label for="other">Other</label>
+            <br><br>
+            <label for="age">Enter your Age : </label>
+            <br>
+            <input required type="number" id="age" name="age" min="18" max="65" placeholder="Enter your age" class="input_styling">
+            <br><br>
+            <label for="birth_city">Enter your City :</label><br>
+            <select required name="birth_city" id="birth_city">
+                <option hidden></option>
+                <option value="bangalore">Bangalore</option>
+                <option value="jaipur">Jaipur</option>
+                <option value="sambalpur">Sambalpur</option>
+                <option value="mangalore">Mangalore</option>
+                <option value="patna">Patna</option>
+                <option value="srinagar">Srinagar</option>
+                <option value="kanput">Kanpur</option>
+                <option value="guwahati">Guwahati</option>
+                <option value="hassan">Hassan</option>
+                <option value="ramnagar">Ramnagar</option>
+                <option value="bidar">Bidar</option>
+                <option value="tumkur">Tumkur</option>
+            </select>
+            <br><br>
+            <label for="resume">Upload your Resume:</label>
+            <input required type="file" name="resume" accept="application/pdf,application/doc,application/docx">
+            <br><br>
+            <label for="position">Enter the position you are applying for:</label><br>
+            <select required name="position" id="position">
+                <option hidden></option>
+                <option value="developer">Developer</option>
+                <option value="designer">Designer</option>
+                <option value="test_engineer">Testing Engineer</option>
+                <option value="sales_support">Sales Support</option>
+                <option value="hr">Human Resource (HR)</option>
+            </select>
+            <br><br>
+            <label for="joining_date">Enter your tentative joining date</label>
+            <br>
+            <input required type="date" id="joining_date" name="joining_date" class="input_styling">
+            <br><br>
+            <button class="btn input_styling" value="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        var form = document.getElementById("form-wrap");
+        form.addEventListener("submit", function (event) {
+            var data = {
+                firstname: form.firstname.value,
+                lastname: form.lastname.value,
+                email: form.email.value,
+                gender: form.gender.value,
+                age:form.age.value,
+                birth_city:form.birth_city.value,
+                resume:form.resume.value,
+                position: form.position.value,
+                joining_date:form.joining_date.value,
+                
+            };
+            if(navigator.onLine){
+                alert("Form submitted successfully!!");
+            }else{
+                localStorage.setItem("formData", JSON.stringify(data));
+                alert("Sorry you are offline. Form data is submitted to localStorage");
+            }
+            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Assignment 1</title>
+    <style>
+        canvas {
+            border: 3px solid black;
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="newCanvas" width="800" height="800"></canvas>
+    <script>
+        
+        var canvas = document.getElementById('newCanvas');
+        var ctx = canvas.getContext('2d');
+        function drawStar(){
+         //Making stars
+         var gap=0;
+         for(var i=0;i<3;i++){
+         
+         var r=Math.round(Math.random()*255);
+         var b=Math.round(Math.random()*255);
+         var g=Math.round(Math.random()*255);
+         ctx.fillStyle = "rgb("+r+","+g+","+b+")";;
+         // ctx.clearRect(0, 0, 500, 500);
+         
+         ctx.beginPath();
+         ctx.moveTo(108+gap, 0.0);
+         ctx.lineTo(141+gap, 70);
+         ctx.lineTo(218+gap, 78.3);
+         ctx.lineTo(162+gap, 131);
+         ctx.lineTo(175+gap, 205);
+         
+         ctx.lineTo(108+gap, 170);
+         ctx.lineTo(41.2+gap, 205);
+         ctx.lineTo(55+gap, 131);
+         ctx.lineTo(1+gap, 78);
+         ctx.lineTo(75+gap, 68);
+         ctx.lineTo(108+gap, 0);
+         ctx.closePath();
+         ctx.fill();
+         gap+=230;
+         }
+         
+         ctx.fillStyle="red";
+         //making triangle
+         ctx.beginPath();
+         ctx.moveTo(20, 300);
+         ctx.lineTo(120, 300);
+         ctx.lineTo(70, 250);
+         ctx.fillRect(20,300,100,100);
+         ctx.closePath();
+         ctx.fill();
+         ctx.beginPath();
+         ctx.moveTo(200, 300);
+         ctx.lineTo(300, 300);
+         ctx.lineTo(250, 250);
+         ctx.fillRect(200,300,100,100);
+         ctx.closePath();
+         ctx.fill();
+         
+
+         
+         ctx.fillStyle = "#ff5722";
+
+        // semicircle of diya
+        var gap=53;
+        for(var i=0;i<7;i++){
+        
+        ctx.beginPath();
+        ctx.arc(gap, 750, 50, 0, Math.PI );
+        ctx.fill();
+        gap+=120;
+        ctx.closePath();
+        }
+        // lamp of diya
+        var gap=0;
+        for(var i=0;i<7;i++){
+        ctx.fillStyle = "#ffeb3b";
+        ctx.beginPath();
+        ctx.moveTo(30+gap, 750);
+        ctx.lineTo(55+gap, 700);
+        ctx.lineTo(80+gap, 750);
+        ctx.closePath();
+        ctx.fill();
+        gap+=120;
+        }
+        }
+
+        
+        var gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0,"orange");
+        gradient.addColorStop(1, "	#FFFFED"); 
+        
+        function drawGradientBackground() {
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        
+        //writing the text
+        var text = "Wishing You HAPPY DEEPAWALI!!";
+        var text1 = "You and Your Family!!";
+        
+        var x = 0;
+        2
+        ctx.fillText(text, x, 600);
+        var speed = 2;
+        
+        function animateText() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawGradientBackground(); 
+            drawStar();
+            ctx.font = " bold 50px arial";
+            ctx.fillStyle = "black";
+            ctx.strokeStyle="red";
+            ctx.fillText(text, x, 500);
+            ctx.fillText(text1,x+100,600);
+            
+            x += speed;
+            if (x > canvas.width) {
+                x = -ctx.measureText(text).width; 
+            }
+            
+            requestAnimationFrame(animateText);
+            
+        }
+        animateText()
+        
+
+
+        
+        
+    </script>
+</body>
+
+</html>
