@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <canvas id="newCanvas" width="800" height="800"></canvas>
+    <canvas id="newCanvas" width="700" height="700"></canvas>
     <script>
         
         var canvas = document.getElementById('newCanvas');
@@ -47,23 +47,49 @@
          gap+=230;
          }
          
-         ctx.fillStyle="red";
-         //making triangle
+         //first rocket
          ctx.beginPath();
+         ctx.fillStyle="green";
          ctx.moveTo(20, 300);
          ctx.lineTo(120, 300);
          ctx.lineTo(70, 250);
-         ctx.fillRect(20,300,100,100);
          ctx.closePath();
          ctx.fill();
          ctx.beginPath();
-         ctx.moveTo(200, 300);
-         ctx.lineTo(300, 300);
-         ctx.lineTo(250, 250);
-         ctx.fillRect(200,300,100,100);
+         ctx.fillStyle="red"
+         ctx.fillRect(20,300,100,100);
          ctx.closePath();
          ctx.fill();
+
+         //second rocket
+         ctx.beginPath();
+         ctx.fillStyle="red";
+         ctx.moveTo(580, 300);
+         ctx.lineTo(680, 300);
+         ctx.lineTo(630, 250);
+         ctx.closePath();
+         ctx.fill();
+         ctx.beginPath();
+         ctx.fillStyle="green"
+         ctx.fillRect(580,300,100,100);
+         ctx.closePath();
+         ctx.fill();
+
+
+         //to draw a window inside rocket
+        ctx.beginPath();
+        ctx.fillStyle="silver";
+        ctx.moveTo(20,370);
+        ctx.fillRect(44,330,50,50);
+        ctx.fill();
+        ctx.stroke();
          
+        ctx.beginPath();
+        ctx.fillStyle="silver";
+        ctx.moveTo(580,370);
+        ctx.fillRect(605,330,50,50);
+        ctx.fill();
+        ctx.stroke();
 
          
          ctx.fillStyle = "#ff5722";
@@ -73,19 +99,19 @@
         for(var i=0;i<7;i++){
         
         ctx.beginPath();
-        ctx.arc(gap, 750, 50, 0, Math.PI );
+        ctx.arc(gap, 650, 50, 0, Math.PI );
         ctx.fill();
         gap+=120;
         ctx.closePath();
         }
         // lamp of diya
         var gap=0;
-        for(var i=0;i<7;i++){
+        for(var i=0;i<6;i++){
         ctx.fillStyle = "#ffeb3b";
         ctx.beginPath();
-        ctx.moveTo(30+gap, 750);
-        ctx.lineTo(55+gap, 700);
-        ctx.lineTo(80+gap, 750);
+        ctx.moveTo(30+gap, 650);
+        ctx.lineTo(55+gap, 600);
+        ctx.lineTo(80+gap, 650);
         ctx.closePath();
         ctx.fill();
         gap+=120;
@@ -107,8 +133,7 @@
         var text1 = "You and Your Family!!";
         
         var x = 0;
-        2
-        ctx.fillText(text, x, 600);
+        ctx.fillText(text, x, 500);
         var speed = 2;
         
         function animateText() {
@@ -118,8 +143,8 @@
             ctx.font = " bold 50px arial";
             ctx.fillStyle = "black";
             ctx.strokeStyle="red";
-            ctx.fillText(text, x, 500);
-            ctx.fillText(text1,x+100,600);
+            ctx.fillText(text, x, 480);
+            ctx.fillText(text1,x+100,550);
             
             x += speed;
             if (x > canvas.width) {
